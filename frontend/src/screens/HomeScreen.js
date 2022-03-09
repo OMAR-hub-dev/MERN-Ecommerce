@@ -3,6 +3,7 @@ import React, { useEffect, useReducer, useState } from 'react'
 import axios from 'axios'
 import logger from 'use-reducer-logger';
 import Product from '../componenents/Product';
+import { Helmet } from 'react-helmet-async';
 
 // declarion de reducer
 const reducer = (state, action )=>{
@@ -15,7 +16,6 @@ const reducer = (state, action )=>{
     case 'FETCH_FAIL':
       return {...state, loading : false};
       default: return state;
-
   }
 };
 
@@ -43,6 +43,7 @@ const HomeScreen = () => {
 
   return (
     <div>
+      <Helmet><title>Bondoufle Store</title></Helmet>
          <h1>Featured Products</h1>
           <div className='products'>
             {

@@ -9,6 +9,15 @@ const app = express();
 app.get('/api/products', (req, res)=>{
     res.send(data.products);
 });
+// pour recuperer le detail de mon produit 
+app.get('/api/products/slug/:slug', (req, res)=>{
+    const product = data.products.find(x => x.slug === req.params.slug);
+    if(product){
+        res.send(product)
+    }else{
+        res.status(404).send({message:'Product not found'});
+    }
+});
 // app.get('/', (req, res) =>{
 //     res.send('Server is ready');
 // });

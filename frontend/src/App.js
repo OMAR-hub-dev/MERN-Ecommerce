@@ -14,14 +14,14 @@ function App() {
     <div className="App d-flex flex-column site-container">
       <header>
         <Navbar bg="warning" variant="dark">
-          <Container>
+          <Container >
             <LinkContainer to="/">
               <Navbar.Brand>Bondoufle store</Navbar.Brand>
             </LinkContainer>
           </Container>
         </Navbar>
       </header>
-      <main>
+      <main className='mt-4'>
         <Routes>
           <Route path="/product/:slug" element={<ProductScreen/>}/>
           <Route path="/" element={<HomeScreen/>}/>
