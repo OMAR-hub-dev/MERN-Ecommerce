@@ -1,9 +1,11 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useReducer,  } from 'react'
 //  import data from '../data'
 import axios from 'axios'
 import logger from 'use-reducer-logger';
 import Product from '../componenents/Product';
 import { Helmet } from 'react-helmet-async';
+import LoadingBox from '../componenents/LoadingBox';
+import MessageBox from '../componenents/MessageBox';
 
 // declarion de reducer
 const reducer = (state, action )=>{
@@ -47,8 +49,8 @@ const HomeScreen = () => {
          <h1>Featured Products</h1>
           <div className='products'>
             {
-            loading ? (<div>...Loading </div>)
-            : error ? (<div>{error}</div>)
+            loading ? (<LoadingBox/>)
+            : error ? (<MessageBox variant="danger">{error}</MessageBox>)
             : products.map(product => (<Product product= {product} ></Product>))}
           </div>
     </div>

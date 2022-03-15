@@ -81,6 +81,9 @@ main {
 .active-nav {
   left: 0;
 }
+.text-dark{
+  color: #000000;
+}
 .text-bold {
   font-weight: bold;
 }

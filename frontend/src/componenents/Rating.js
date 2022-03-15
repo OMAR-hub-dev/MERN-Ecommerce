@@ -19,7 +19,7 @@ const Rating = (props) => {
        <span>
             <i className={rating>=5? 'fas fa-star': rating>= 4.5? 'fas fa-star-half-alt':'far fa-star'}/>
        </span>
-       <span> {numReviews} reviews
+       <span className='text-dark'> {numReviews} reviews
        </span>
     </div>
   )
