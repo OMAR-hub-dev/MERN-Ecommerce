@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
+import CheckoutSteps from '../componenents/CheckoutSteps';
 
 
 
@@ -53,6 +54,7 @@ function ShippingAddressScreen() {
         <Helmet>
             <title>Shipping Address</title>
         </Helmet>
+        <CheckoutSteps step1 step2></CheckoutSteps>
         <h1 className='my-3'>Shipping Address</h1>
         <Container className="small-container">
         <Form onSubmit={submitHandler}>
