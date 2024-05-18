@@ -6,6 +6,8 @@ import Product from '../componenents/Product';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../componenents/LoadingBox';
 import MessageBox from '../componenents/MessageBox';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
 
 // declarion de reducer
 const reducer = (state, action )=>{
@@ -16,7 +18,7 @@ const reducer = (state, action )=>{
     case 'FETCH_SUCCESS':
       return {...state,products:action.payload, loading : false};
     case 'FETCH_FAIL':
-      return {...state, loading : false};
+      return {...state, loading : false, error : action.payload};
       default: return state;
   }
 };
@@ -34,7 +36,7 @@ const HomeScreen = () => {
       const result = await axios.get('/api/products');
       dispatch({type:'FETCH_SUCCESS', payload:result.data })
 
-      }catch{
+      }catch(error){
         dispatch({type:'FETCH_FAIL', payload: error.message})
       }
       // setProducts(result.data);
@@ -46,13 +48,19 @@ const HomeScreen = () => {
   return (
     <div>
       <Helmet><title>Bondoufle Store</title></Helmet>
-         <h1>Featured Products</h1>
-          <div className='products'>
+         <h1>Produits Vedettes </h1>
+          <Row >
             {
             loading ? (<LoadingBox/>)
             : error ? (<MessageBox variant="danger">{error}</MessageBox>)
-            : products.map(product => (<Product product= {product} ></Product>))}
-          </div>
+          
+            : products.map(product => (
+            <Col key={product.slug} sm={6} md={4} lg={3} className='mb-3'>
+              <Product product= {product} ></Product>
+            </Col>          
+            ))            
+            }
+          </Row>
     </div>
   )
 }

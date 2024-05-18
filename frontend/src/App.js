@@ -37,14 +37,14 @@ function App() {
     <div className="App d-flex flex-column site-container">
     <ToastContainer position ='bottom-center' limit={1}/>
       <header>
-        <Navbar bg="warning" variant="dark">
+        <Navbar bg="dark" variant="dark">
           <Container >
             <LinkContainer to="/">
               <Navbar.Brand>Bondoufle store</Navbar.Brand>
             </LinkContainer>
-            <Nav className='me-auto'>
+            <Nav className='d-flex justify-content-around'>
                 <Link to ='/cart' className='nav-link'>
-                  Cart
+                  Pannier
                       {cart.cartItems.length > 0 && (
                         <Badge pill bg="danger">
                           {cart.cartItems.reduce((a,c)=> a+ c.quantity, 0)}
@@ -70,24 +70,25 @@ function App() {
                   </NavDropdown>
                 )
                 :(<Link className="nav-link" to="/signin">
-                  Sign In
+                  Se connecter
                   </Link>)}
             </Nav>
           </Container>
         </Navbar>
       </header>
       <main className='mt-4'>
-        <Routes>
-          <Route path="/product/:slug" element={<ProductScreen/>}/>
-          <Route path="/cart" element={<CartScreen/>}/>
-          <Route path="/Signin" element={<SigninScreen/>}/>
-          <Route path="/Signup" element={<SignupScreen/>}/>
-          <Route path="/placeorder" element={<PlaceOrderScreen/>}/>
-          <Route path="/shipping" element={<ShippingAddressScreen/>}/>
-          <Route path="/payment" element={<PaymentMethodScreen/>}/>
-          <Route path="/" element={<HomeScreen/>}/>
-        </Routes>
-                 
+        <Container className='mt-3'>
+          <Routes>
+            <Route path="/product/:slug" element={<ProductScreen/>}/>
+            <Route path="/cart" element={<CartScreen/>}/>
+            <Route path="/Signin" element={<SigninScreen/>}/>
+            <Route path="/Signup" element={<SignupScreen/>}/>
+            <Route path="/placeorder" element={<PlaceOrderScreen/>}/>
+            <Route path="/shipping" element={<ShippingAddressScreen/>}/>
+            <Route path="/payment" element={<PaymentMethodScreen/>}/>
+            <Route path="/" element={<HomeScreen/>}/>
+          </Routes>
+        </Container>        
       </main>
       <footer>
         <div className='text-center'> ALL Rights Reserverd </div>
