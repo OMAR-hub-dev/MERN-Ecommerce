@@ -3,6 +3,8 @@
 # dependencies
 .env
 node_modules
+notes.md
+
 /.pnp
 .pnp.js
 

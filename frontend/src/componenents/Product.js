@@ -36,11 +36,11 @@ function Product(props) {
       <Card.Body >
         <Link to={`/product/${product.slug}`}><p>{product.name}</p></Link>
         <Rating rating={product.rating} numReviews={product.numReviews} />
-        <strong><p>$ {product.price}</p></strong>
+        <strong><p> {product.price} €</p></strong>
 
         {product.countInStock === 0
-          ? <Button variant='light' disabled>out of stock</Button>
-          : <Button className='btn-primary' onClick={() => addToCartHandler(product)}>Add to cart</Button>
+          ? <Button variant='light' disabled>Indisponible</Button>
+          : <Button className='btn-primary' onClick={() => addToCartHandler(product)}>Ajouter au pannier</Button>
         }
       </Card.Body>
 
